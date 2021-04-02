@@ -1,0 +1,16 @@
+version: '3'
+services:
+    devenv:
+        container_name: devenv
+        build:
+            context: ./devenv
+            dockerfile: ./Dockerfile
+        privileged: true
+        environment:
+            TZ: "Asia/Tokyo"
+        volumes:
+            - ./opt:/root/opt        # Webドキュメントルート
+        # ports:
+        #     - 8090:80
+        tty: true
+        stdin_open: true
