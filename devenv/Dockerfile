@@ -12,10 +12,15 @@ RUN apt-get update \
         git \
         zlib1g-dev \
         libffi-dev \
-        ca-certificates \
-        python3 \
-        python3-pip \
-        python3-venv
+        ca-certificates 
+        # python3 \
+        # python3-pip \
+        # python3-venv
+
+RUN apt-get install python3-pip
+RUN pip3 install cmake
+RUN apt-get install libwebp*
+RUN apt-get install libsm6 libxrender1 libxext-dev
 
 # pyenvの環境を構築
 WORKDIR /root
@@ -39,7 +44,7 @@ RUN pyenv rehash
 # # RUN python -m venv /opt/soracom/python/
 # # RUN source /opt/soracom/python/bin/activate
 
-RUN mkdir -p /opt/soracom/python/
-RUN chown -R root:root /opt/soracom/
-RUN python3 -m venv /opt/soracom/python/
-RUN echo "source /opt/soracom/python/bin/activate" >> /root/.bashrc
+# RUN mkdir -p /opt/soracom/python/
+# RUN chown -R root:root /opt/soracom/
+# RUN python3 -m venv /opt/soracom/python/
+# RUN echo "source /opt/soracom/python/bin/activate" >> /root/.bashrc
